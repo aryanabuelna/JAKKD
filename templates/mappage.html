@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>A Meme</title>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
     <style>
-      #meme-div{
-      width: 450px;
-      height: 450px;
-      background-size: 100%;
-      text-align: center;
-      position: relative;
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
       }
-      h2 {
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 15px 0;
-        padding: 0 5px;
-        font-family: impact;
-        color: white;
-        text-shadow: 1px 1px black;
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
       }
-      #line1 {
-         top: 0;
-       }
-      #line2 {
-         bottom: 0;
-       }
     </style>
   </head>
   <body>
-    <h1>Your Meme</h1>
-    <!--The image needs to be rendered for each new meme
-    so set the div's background-image property inline -->
-    <div id="meme-div" style="background-image:url({{img_url}});">
-      <h2 id="line1">{{line1}}</h2>
-      <h2 id="line2">{{line2}}</h2>
-    </div>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 36.6777, lng: -121.6555},
+          zoom: 12
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS-nWzappA8Ff4Cdy5UWociu4R6u6Qx60&callback=initMap"
+    async defer></script>
   </body>
 </html>
