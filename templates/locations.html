@@ -18,6 +18,18 @@
             display: flex;
             justify-content: center;
         }
+        
+        .links a {
+            font-size: 23px;
+            margin-top: 23px;
+            color: white;
+        }
+        
+        .links a:hover {
+            font-size: 23px;
+            margin-top: 23px;
+            color: #880000;
+        }
 
         .background {
             height: 400px;
@@ -25,7 +37,7 @@
             background-color: white;
             display: flex;
             justify-content: center;
-            margin-top: 100px;
+            margin-top: 140px;
             margin-left: 180px;
             opacity: 0.8;
         }
@@ -36,11 +48,21 @@
             height: 375px;
             margin: 10px 0px 0px 0px;
         }
+        
 
         .title {
             font-family: 'Barlow Semi Condensed', sans-serif;
             margin: 150px 0px 0px 270px;
             font-size: 35px;
+            height: 400px;
+        }
+        
+         .description {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            margin: 115px 0px 0px 150px;
+            font-size: 25px;
+            height: 400px;
+            width: 570px;
         }
 
         .topnav {
@@ -50,7 +72,13 @@
         }
 
         .button {
-            margin: -40px 0px 0px 210px;
+            margin: -20px 0px 0px -130px;
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
         }
 
         ul {
@@ -82,15 +110,39 @@
           text-decoration: none;
           color: #880000;
         }
+        
+        #myBtn {
+          display: none;
+          position: fixed;
+          bottom: 20px;
+          right: 30px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: #880000;
+          color: white;
+          cursor: pointer;
+          padding: 15px;
+          border-radius: 4px;
+        }
+        
+        #myBtn:hover {
+          background-color: #ccc;
+          color: #000;
+        }
         </style>
     </head>
     <title>Map the Crime</title>
     <body>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         <div>
             <header>
             <nav>
                 <ul>
-                    <li><a href="index.html">Map the Crime</a></li>
+                    <li><a href="locations.html">Map the Crime</a></li>
+                    <li class="links"><a href="#about">About</a></li>
+                    <li class="links"><a href="">Contact</a></li>
                 </ul>
               </nav>
             </header>
@@ -103,12 +155,43 @@
                               <input type="text" placeholder="Search...">
                             </div>
                             <div class="button">
-                                <button type="button">SEARCH</button>
+                                <form method = POST action = "/showmap">
+                                    <input type= "submit" class="btn" value="Search">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br><br><br><br><br><br><br><br><br><br>
+            <div class="background"><a name="about"></a>
+                <div class="border">
+                    <div class="description" align="center">
+                        This project was made as a way to streamline crime data statistics collected by cities and use it to further 
+                        public safety by making it more accesible for everyday use. Users can see where crime rates are higher in their 
+                        city and use this data to find safer walking and biking routes.
+                    </div>
+                </div>
+            </div>
         </div>
+        <script>
+        var mybutton = document.getElementById("myBtn");
+        
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+          } 
+          else {
+            mybutton.style.display = "none";
+          }
+        }
+        
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+        </script>
     </body>
 </html>
